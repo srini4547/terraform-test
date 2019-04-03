@@ -1,8 +1,8 @@
 variable "aws_region" {
     default = "us-east-1"
 }
-variable "lambda_function_name_for_ec2_terminate_info" {
-    default = "ec2_terminate_info"
+variable "lambda_function_name_for_ec2-terminate-info" {
+    default = "ec2-terminate-info"
 }
 
 
@@ -44,7 +44,7 @@ resource "aws_cloudwatch_event_rule" "terminate_instances_event_rule" {
 resource "aws_cloudwatch_event_target" "terminate_instances_event_target" {
   target_id = "terminate_instances_lambda_target"
   rule = "${aws_cloudwatch_event_rule.terminate_instances_event_rule.name}"
-  arn = "${aws_lambda_function.ec2_terminate_alert.arn}"
+  arn = "${aws_lambda_function.ec2-terminate-alert.arn}"
 }
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_ec2_terminate_alert" {
     statement_id = "AllowExecutionFromCloudWatch"
